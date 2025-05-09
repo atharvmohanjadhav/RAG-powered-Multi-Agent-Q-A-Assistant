@@ -44,6 +44,7 @@ This project implements a knowledge assistant that answers questions based on a 
 ## Usage
 
 1. Start the Streamlit application:
+
         streamlit run app.py
 
 
