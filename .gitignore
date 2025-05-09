@@ -1,3 +1,4 @@
 .env
 venv/
 bm2_values.json
+notebook.ipynb
