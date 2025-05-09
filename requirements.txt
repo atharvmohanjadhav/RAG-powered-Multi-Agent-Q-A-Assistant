@@ -8,3 +8,4 @@ tqdm
 pypdf
 sentence-transformers
 langchain-huggingface
+langchain-community
