@@ -1,9 +1,8 @@
-
 import os
 from dotenv import load_dotenv
 from tools import DefineTool, CalculatorTool
-from ingest import retriever  # Pinecone retriever from your ingest.py
-from langchain_groq import ChatGroq  # or use OpenAI if preferred
+from ingest import retriever  
+from langchain_groq import ChatGroq  
 
 load_dotenv()
 
@@ -26,7 +25,6 @@ def handle_query(user_query: str):
 
     query = user_query.strip().lower()
 
-    # Tool Routing
     if "define" in query:
         log["tool"] = "Dictionary Tool"
         define_tool = DefineTool()
@@ -42,16 +40,12 @@ def handle_query(user_query: str):
         print("Tool selected: Calculator Tool")
 
     else:
-        # RAG Flow: Retrieval + Generation
         log["tool"] = "RAG Pipeline"
         docs = retriever.invoke(user_query)
         context_chunks = [doc.page_content if hasattr(doc, "page_content") else doc for doc in docs]
-
         log["context"] = context_chunks
         combined_context = "\n\n".join(context_chunks)
-
         prompt = f"You are a helpful assistant. Based on the following context, answer the question.\n\nContext:\n{combined_context}\n\nQuestion: {user_query}"
-
         response = chat.invoke(prompt)
         log["answer"] = response.content
         print("Tool selected: RAG (LLM)")

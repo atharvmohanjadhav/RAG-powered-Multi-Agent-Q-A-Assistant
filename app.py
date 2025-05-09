@@ -1,4 +1,3 @@
-
 import streamlit as st
 from agents import handle_query
 
@@ -29,5 +28,4 @@ if query:
     st.subheader("Answer:")
     st.markdown(f"<div style= padding: 12px; border-radius: 8px; font-size: 16px;'>{result['answer']}</div>", unsafe_allow_html=True)
 
-# Optional Footer
 st.markdown("---")
