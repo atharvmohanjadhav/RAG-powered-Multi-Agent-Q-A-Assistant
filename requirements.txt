@@ -9,4 +9,5 @@ pypdf
 sentence-transformers
 langchain-huggingface
 langchain-community
+pinecone_text
 
