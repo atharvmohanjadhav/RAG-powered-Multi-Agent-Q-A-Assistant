@@ -1,6 +1,5 @@
 langchain
 streamlit
-pinecone-client
 langchain-pinecone
 langchain-groq
 python-dotenv
